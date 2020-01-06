@@ -1,0 +1,26 @@
+
+version: "3.7"
+
+networks:
+  web:
+    driver: bridge
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    networks:
+      - web
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dataviz
+
+  adminer:
+    image: adminer
+    restart: always
+    networks:
+      - web
+    ports:
+      - 8080:8080

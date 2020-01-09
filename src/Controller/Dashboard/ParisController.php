@@ -41,4 +41,22 @@ class ParisController extends AbstractController
         $paris = $response->toArray();
         return $this->render('paris/index.html.twig', compact('paris'));
     }
+
+    /**
+     * @Route("/paris/{id}/delete", name="delete-paris")
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
+     */
+    public function deleteParis($id, Request $request)
+    {
+        $client = HttpClient::create();
+
+        $response = $client->request('DELETE', 'http://dataviz-api.benjaminadida.fr/api/paris/'.$id.'/delete', [
+            'auth_bearer' => $this->getApiToken(),
+        ]);
+
+        return $this->redirectToRoute('index-paris');
+    }
 }

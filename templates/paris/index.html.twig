@@ -49,10 +49,10 @@
                             <i class="far fa-edit"></i>
                         </a>
                     </td>
-                    <td>
-                        <a href={{ path('admin_delete_paris', {id: detail.id}) }} class="js-delete">
+                    <td>#}
+                        <a href={{ path('delete-paris', {id: detail.id}) }} class="js-delete">
                             <i class="fas fa-trash-alt"></i>
-                        </a>#}
+                        </a>
                     </td>
                 </tr>
             {% endfor %}

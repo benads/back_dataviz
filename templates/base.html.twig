@@ -11,6 +11,14 @@
     </head>
     <body>
 
+
+
+        {% block navbar %}
+            {% if is_granted('ROLE_ADMIN') %}
+                {% include 'elements/navbar.html.twig' %}
+            {% endif %}
+        {% endblock %}
+
         {% block body %}
 
         {% endblock %}

@@ -1,20 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block navbar %}
+
     <div class="sidebar-container">
-        <div class="sidebar-logo">
+        <div class="sidebar-logo" style="background:linear-gradient(100deg, #ff6ec4, #7873f5)">
             Admin ParisGO
         </div>
         <ul class="sidebar-navigation">
             <li class="header">Navigation</li>
             <li>
-                <a href="#">
+                <a href="{{ path('home') }}">
                     <i class="fa fa-home" aria-hidden="true"></i> Homepage
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
+                <a href="{{ path('index-paris') }}">
+                    <i class="fa fa-tachometer" aria-hidden="true"></i> Paris
                 </a>
             </li>
             <li class="header">Another Menu</li>
@@ -41,4 +42,5 @@
 
         </ul>
     </div>
+
 {% endblock %}

@@ -8,8 +8,7 @@
 }
 
 body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
+  background: #fff;
 }
 
 .card-signin {
@@ -101,6 +100,10 @@ body {
   padding-bottom: calc(var(--input-padding-y) / 3);
   font-size: 12px;
   color: #777;
+}
+
+.btn-gradient {
+  background: linear-gradient(100deg,#2E382E, #50C9CE);
 }
 
 

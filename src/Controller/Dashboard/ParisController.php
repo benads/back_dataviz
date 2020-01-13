@@ -59,4 +59,38 @@ class ParisController extends AbstractController
 
         return $this->redirectToRoute('index-paris');
     }
+
+    /**
+     * @Route("/paris/create", name="create-paris")
+     */
+    public function createParis(Request $request)
+    {
+        $paris = new Paris();
+
+        $form = $this->createForm(ParisType::class, $paris);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $client = HttpClient::create();
+
+            $client->request('POST', 'http://dataviz-api.benjaminadida.fr/api/paris/create', [
+                'json' => [
+                    'borough' => $form->get('district')->getData(),
+                    'district' => $form->get('borough')->getData(),
+                    'count_hotel' => $form->get('count_hotel')->getData(),
+                    'latitude' => $form->get('latitude')->getData(),
+                    'longitude' => $form->get('longitude')->getData()
+                ],
+                'auth_bearer' => $this->getApiToken(),
+            ]);
+
+            $this->addFlash('success', 'Un nouvel item à été ajouté');
+            return $this->redirectToRoute('index-paris');
+        }
+        return $this->render('paris/create.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
 }

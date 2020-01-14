@@ -4,6 +4,8 @@
 
 {% block body %}
 
+<div class="content-container text-center">
+    <div class="container-fluid" style="padding-right:60px;padding-left:60px">
         <!-- Main component for a primary marketing message or call to action -->
         <div class="jumbotron">
             <nav aria-label="breadcrumb">
@@ -12,22 +14,6 @@
                     <li class="breadcrumb-item"><a href="{{ path('index-paris') }}">Paris</a></li>
                 </ol>
             </nav>
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <p>{{ message }}</p>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-        {% endfor %}
-        {#<a class="btn btn-primary m-2" href="{{ path('admin_create_paris') }}">Ajouter dans Paris</a>#}
-
-    <div class="content-container text-center">
-        <div class="container-fluid" style="padding-right:60px;padding-left:60px">
-
-            <!-- Main component for a primary marketing message or call to action -->
-            <div class="jumbotron">
-
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <p>{{ message }}</p>
@@ -36,7 +22,9 @@
                     </button>
                 </div>
             {% endfor %}
+            <div>
                 <a class="btn btn-primary m-2" href="{{ path('create-paris') }}">Ajouter dans Paris</a>
+            </div>
 
             <table class="table">
                 <thead>
@@ -78,8 +66,9 @@
             </div>
         </div>
     </div>
-
 {% endblock %}
+
+
 
 
 

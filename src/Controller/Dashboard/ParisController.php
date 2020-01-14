@@ -103,7 +103,6 @@ class ParisController extends AbstractController
 
         $url = 'https://dataviz-api.benjaminadida.fr/api/paris/' . $id . '/edit';
 
-        // 'delete-item' is the same value used in the template to generate the token
         if ($this->isCsrfTokenValid('create-item', $submittedToken)) {
             $client->request('PUT', $url, [
                 'json' => [
@@ -115,6 +114,7 @@ class ParisController extends AbstractController
                 ],
                 'auth_bearer' => $this->getApiToken(),
             ]);
+
             $this->addFlash('success', 'L\'item a été modifié avec succès.');
             return $this->redirectToRoute('index-paris');
         }

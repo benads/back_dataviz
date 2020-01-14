@@ -20,7 +20,7 @@
             {% endfor %}
                 <a class="btn btn-primary m-2" href="{{ path('create-paris') }}">Ajouter dans Paris</a>
 
-            <table class="table d-flex justify-content-center align-items-center flex-column">
+            <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
@@ -43,12 +43,12 @@
                             {#<a href={{ path('admin_show_paris', {id: detail.id}) }} class="js-detail">
                                 <i class="fas fa-info-circle"></i>
                             </a>
-                        <td>
-                            <a href={{ path('admin_update_paris', {id: detail.id}) }} class="js-modify">
+                        <td>#}
+                            <a href={{ path('update-paris', {id: detail.id}) }} class="js-modify" data-toggle="tooltip" data-placement="top" title="Modifier">
                                 <i class="far fa-edit"></i>
                             </a>
                         </td>
-                        <td>#}
+                        <td>
                             <a href={{ path('delete-paris', {id: detail.id}) }} class="js-delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
@@ -62,6 +62,7 @@
     </div>
 
 {% endblock %}
+
 
 
 

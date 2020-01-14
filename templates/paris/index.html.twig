@@ -3,8 +3,6 @@
  {% block title %} Admin-ParisGO {% endblock %}
 
 {% block body %}
-<div class="content-container text-center">
-    <div class="container-fluid" style="padding-right:60px;padding-left:60px">
 
         <!-- Main component for a primary marketing message or call to action -->
         <div class="jumbotron">
@@ -24,50 +22,65 @@
         {% endfor %}
         {#<a class="btn btn-primary m-2" href="{{ path('admin_create_paris') }}">Ajouter dans Paris</a>#}
 
-        <table class="table d-flex justify-content-center align-items-center flex-column">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Arrondissement</th>
-                <th scope="col">Nombre d'hotels</th>
-                <th scope="col">Lieu</th>
-                <th scope="col">Google Maps</th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for detail in paris %}
-                <tr>
-                    <th scope="row">{{ detail.id }}</th>
-                    <td>{{ detail.borough }}</td>
-                    <td>{{ detail.nb_hotels }}</td>
-                    <td>{{ detail.district }}</td>
-                    <td>Longitude : {{ detail.googleMaps.longitude }} <br> Latitude : {{ detail.googleMaps.latitude }}</td>
-                    <td>
-                        {#<a href={{ path('admin_show_paris', {id: detail.id}) }} class="js-detail">
-                            <i class="fas fa-info-circle"></i>
-                        </a>
-                    <td>
-                        <a href={{ path('admin_update_paris', {id: detail.id}) }} class="js-modify">
-                            <i class="far fa-edit"></i>
-                        </a>
-                    </td>
-                    <td>
-                        <a href={{ path('admin_delete_paris', {id: detail.id}) }} class="js-delete">
-                            <i class="fas fa-trash-alt"></i>
-                        </a>#}
-                    </td>
-                </tr>
+    <div class="content-container text-center">
+        <div class="container-fluid" style="padding-right:60px;padding-left:60px">
+
+            <!-- Main component for a primary marketing message or call to action -->
+            <div class="jumbotron">
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p>{{ message }}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             {% endfor %}
-            </tbody>
-        </table>
+                <a class="btn btn-primary m-2" href="{{ path('create-paris') }}">Ajouter dans Paris</a>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Arrondissement</th>
+                    <th scope="col">Nombre d'hotels</th>
+                    <th scope="col">Lieu</th>
+                    <th scope="col">Google Maps</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for detail in paris %}
+                    <tr>
+                        <td>{{ detail.id }}</td>
+                        <td>{{ detail.borough }}</td>
+                        <td>{{ detail.nb_hotels }}</td>
+                        <td>{{ detail.district }}</td>
+                        <td>Longitude : {{ detail.googleMaps.longitude }} <br> Latitude : {{ detail.googleMaps.latitude }}</td>
+                        <td>
+                            {#<a href={{ path('admin_show_paris', {id: detail.id}) }} class="js-detail">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        <td>#}
+                            <a href={{ path('update-paris', {id: detail.id}) }} class="js-modify" data-toggle="tooltip" data-placement="top" title="Modifier">
+                                <i class="far fa-edit"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href={{ path('delete-paris', {id: detail.id}) }} class="js-delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
         </div>
     </div>
-</div>
 
-    {% endblock %}
+{% endblock %}
+
 
 
 

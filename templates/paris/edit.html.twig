@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+ {% block title %} Admin-ParisGO {% endblock %}
+
+ {% block body %}
+     <div class="content-container text-center">
+        <div class="container-fluid" style="padding-right:60px;padding-left:60px">
+            <div class="jumbotron">
+                 <form name="paris" method="post">
+                     <div id="paris" class="form-row">
+                         <div class="form-group col-md-6 text-left">
+                             <label for="paris_borough" class="required">Borough</label>
+                             <input type="text" id="paris_borough" name="borough" required="required" value="{{ paris.borough }}" class="form-control" />
+                         </div>
+                         <div class="form-group col-md-6 text-left">
+                             <label for="paris_district" class="required">District</label>
+                             <input type="text" id="paris_district" name=district required="required" value="{{ paris.district }}" class="form-control" />
+                         </div>
+                         <div class="form-group col-md-6 text-left">
+                             <label for="paris_count_hotel" class="required">Count hotel</label>
+                             <input type="text" id="paris_count_hotel" name="count_hotel" required="required" value="{{ paris.nb_hotels }}" class="form-control" />
+                         </div>
+                         <div class="form-group col-md-6 text-left">
+                             <label for="paris_longitude" class="required">Longitude</label>
+                             <input type="text" id="paris_longitude" name="longitude" required="required" value="{{ paris.googleMaps.longitude }}" class="form-control" />
+                         </div>
+                         <div class="form-group col-md-12 text-left">
+                             <label for="paris_latitude" class="required">Latitude</label>
+                             <input type="text" id="paris_latitude" name="latitude" required="required" value="{{ paris.googleMaps.latitude }}" class="form-control" />
+                         </div>
+                         <div class="form-group col-md-12">
+                             <button type="submit" id="paris_Sauvegarder" name="save" class="btn btn-success col-md-4">Sauvegarder</button>
+                         </div>
+                         <input type="hidden" name="_csrf_token"
+                                value="{{ csrf_token('create-item') }}"
+                         >
+                     </div>
+                 </form>
+            </div>
+        </div>
+     </div>
+
+ {% endblock %}

@@ -8,7 +8,12 @@
 
         <!-- Main component for a primary marketing message or call to action -->
         <div class="jumbotron">
-
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color:white">
+                    <li class="breadcrumb-item"><a href="{{ path('home') }}">Accueil</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('index-paris') }}">Paris</a></li>
+                </ol>
+            </nav>
         {% for message in app.flashes('success') %}
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <p>{{ message }}</p>

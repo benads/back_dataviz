@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header">
+        Détail de <span class="text-capitalize">{{ paris.district }}</span>
+    </div>
+    <table class="card-table table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Arrondissement</th>
+            <th scope="col">Longitude</th>
+            <th scope="col">Latitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ paris.id }}</td>
+            <td>{{ paris.district }}</td>
+            <td>{{ paris.googleMaps.longitude }}</td>
+            <td>{{ paris.googleMaps.latitude }}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

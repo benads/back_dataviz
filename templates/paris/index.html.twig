@@ -35,6 +35,7 @@
                     <th scope="col">Lieu</th>
                     <th scope="col">Google Maps</th>
                     <th></th>
+
                 </tr>
                 </thead>
                 <tbody>
@@ -46,16 +47,23 @@
                         <td>{{ detail.district }}</td>
                         <td>Longitude : {{ detail.googleMaps.longitude }} <br> Latitude : {{ detail.googleMaps.latitude }}</td>
                         <td>
-                            {#<a href={{ path('admin_show_paris', {id: detail.id}) }} class="js-detail">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
-                        <td>#}
-                            <a href={{ path('update-paris', {id: detail.id}) }} class="js-modify" data-toggle="tooltip" data-placement="top" title="Modifier">
+
+                                <!-- Button trigger modal -->
+                                <a type="button"
+                                   class="modal-trigger m-2"
+                                   data-toggle="modal"
+                                   data-target="{{ path('show-paris', {id: detail.id}) }}"
+                                   href="#modal1"
+                                >
+                                    <i class="fas fa-info-circle" data-toggle="tooltip" data-placement="top" title="Détail"></i>
+                                </a>
+
+
+                            <a href={{ path('update-paris', {id: detail.id}) }} class="m-2" data-toggle="tooltip" data-placement="top" title="Modifier">
                                 <i class="far fa-edit"></i>
                             </a>
-                        </td>
-                        <td>
-                            <a href={{ path('delete-paris', {id: detail.id}) }} class="js-delete" data-toggle="tooltip" data-placement="top" title="Supprimer">
+
+                            <a href={{ path('delete-paris', {id: detail.id}) }} class="m-2" data-toggle="tooltip" data-placement="top" title="Supprimer">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </td>
@@ -66,7 +74,27 @@
             </div>
         </div>
     </div>
+
+    {#--------MODAL-------#}
+
+    <div id="modal1" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
+
+
 
 
 

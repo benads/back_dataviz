@@ -8,10 +8,12 @@
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
 
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
     </head>
     <body>
-
-
 
         {% block navbar %}
             {% if is_granted('ROLE_ADMIN') %}
@@ -21,10 +23,6 @@
 
         {% block body %}
 
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
         {% endblock %}
 
     </body>

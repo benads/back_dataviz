@@ -8,5 +8,8 @@
     "popper.js": "^1.16.0",
     "sass-loader": "^7.0.1",
     "webpack-notifier": "^1.6.0"
+  },
+  "dependencies": {
+    "spinkit": "^2.0.1"
   }
 }

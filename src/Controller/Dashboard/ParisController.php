@@ -43,7 +43,6 @@ class ParisController extends AbstractController
         return $this->render('paris/index.html.twig', compact('paris'));
     }
 
-
     /**
      * @Route("/paris/create", name="create-paris")
      */
@@ -76,6 +75,19 @@ class ParisController extends AbstractController
         return $this->render('paris/create.html.twig', [
             'form' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/paris/{id}", name="show-paris")
+     */
+    public function showParis($id)
+    {
+        $client = HttpClient::create();
+        $response = $client->request('GET', 'http://dataviz-api.benjaminadida.fr/api/paris/'. $id, [
+            'auth_bearer' => $this->getApiToken(),
+        ]);
+        $paris = $response->toArray();
+        return $this->render('paris/show.html.twig', compact('paris'));
     }
 
     /**
